@@ -13,7 +13,7 @@ from .serializers import TaskSerializer
 def post_create_api_view(request):
     if request.method == 'GET':
         post = models.Task.objects.all()
-        data = TaskSerializer(instanse=post, many=True).data
+        data = TaskSerializer(instance=post, many=True).data
         return Response(data=data)
     elif request.method == 'POST':
         title = request.data.get('title')
@@ -39,7 +39,7 @@ def post_detail_api_view(request, id):
         return Response(status=status.HTTP_404_NOT_FOUND, data={'detail': 'POst Not found.'})
 
     if request.method == 'GET':
-        data = TaskSerializer(instanse=post, many=True).data
+        data = TaskSerializer(instance=post, many=True).data
         return Response(data=data)
     elif request.method == 'PUT':
         post.title = request.data.get('title')
